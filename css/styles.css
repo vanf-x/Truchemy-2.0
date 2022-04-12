@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Raleway", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1e2126;
+  font-size: 2.5rem;
+}
+header .logo {
+  display: flex;
+  align-items: center;
+}
+header .logo h1 {
+  color: #eaedf2;
+  cursor: default;
+  font-family: "DM Serif Display", serif;
+}
+header .search {
+  display: flex;
+  align-items: center;
+}
+header .search i {
+  cursor: pointer;
+}
+header .cart ul {
+  list-style: none;
+}
+header .cart ul .cart-submenu {
+  position: relative;
+}
+header .cart ul .cart-submenu i {
+  color: #464b52;
+}
+header .cart ul .cart-submenu #cart {
+  display: none;
+}
+header .cart ul .cart-submenu #cart #cart-list {
+  font-size: 2rem;
+  font-weight: normal;
+}
+header .cart ul .cart-submenu:hover #cart {
+  display: block;
+  position: absolute;
+  color: #eaedf2;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  background-color: #16191c;
+  padding: 2rem;
+  min-height: 40rem;
+  min-width: 30rem;
+}
+header .cart ul .cart-submenu:hover #cart table {
+  text-align: center;
+}
+header .cart ul .cart-submenu:hover #cart table thead tr {
+  height: 5rem;
+}
+header .cart ul .cart-submenu:hover #cart table tbody tr {
+  height: 5rem;
+}
+header .cart ul .cart-submenu:hover #cart table tbody tr td {
+  font-size: 2rem;
+  text-align: center;
+}
+header .cart ul .cart-submenu:hover #cart table tbody tr td img {
+  width: 100%;
+  height: auto;
+}
+header .cart ul .cart-submenu:hover #cart table tbody tr td button {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+header .cart ul .cart-submenu:hover #cart table tbody tr td button:hover {
+  transform: scale(1.2);
+}
+header .cart ul .cart-submenu:hover #cart p span {
+  font-size: 3rem;
+}
+header .cart ul .cart-submenu:hover #cart button {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+header .cart ul .cart-submenu:hover #cart .reset-btn {
+  width: 100%;
+  background-color: transparent;
+  color: red;
+  border-radius: 0;
+  padding: 1rem;
+  border-color: red;
+  cursor: pointer;
+}
+header .cart ul .cart-submenu:hover #cart .pay-btn {
+  width: 100%;
+  background-color: #00a9c4;
+  border-radius: 0%;
+  padding: 1rem;
+  border-color: #00a9c4;
+  visibility: hidden;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+header .cart ul .cart-submenu:hover #cart .pay-btn:hover {
+  background-color: #08cceb;
+  border-color: #08cceb;
+}
+
+main {
+  background-color: #151518;
+}
+main .hero {
+  background: linear-gradient(90deg, #003dac 0%, #009eb1 100%);
+}
+main .hero img {
+  width: 100%;
+  height: auto;
+}
+main .hero .hero-bar {
+  height: 5rem;
+  width: 100%;
+  background: linear-gradient(90deg, #003dac 0%, #009eb1 100%);
+}
+main .courses {
+  width: 80%;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+main .courses h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  color: #eaedf2;
+}
+main .courses .courses-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+main .courses .courses-container .courses-card {
+  margin: 1.5rem;
+  color: #eaedf2;
+}
+main .courses .courses-container .courses-card .courses-card-info {
+  padding: 1rem;
+  background-color: #2b2b2c;
+}
+main .courses .courses-container .courses-card .courses-card-info h3 {
+  font-size: 2rem;
+}
+main .courses .courses-container .courses-card .courses-card-info h4 {
+  font-size: 1.5rem;
+}
+main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price p {
+  font-size: 2rem;
+  text-decoration: line-through;
+}
+main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price h3 {
+  color: red;
+  font-size: 3rem;
+}
+main .courses .courses-container .courses-card .courses-card-info button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #00a9c4;
+  border: 0px;
+  color: #eaedf2;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+main .courses .courses-container .courses-card .courses-card-info button:hover {
+  background-color: #08cceb;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #1e2126;
+  font-size: 2rem;
+}
+footer ul {
+  list-style: none;
+}
+footer ul li {
+  margin: 1.5rem 0;
+}
+footer ul li a {
+  color: #eaedf2;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

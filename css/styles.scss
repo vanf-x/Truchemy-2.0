@@ -1,0 +1,288 @@
+//Backgrounds
+$black1: #1e2126;
+$black2: #2b2b2c;
+$black3: #151518;
+//FontColor
+$whiteFont: #eaedf2;
+//Buttons
+$succButton: #00a9c4;
+$succButtonHover: #08cceb;
+//
+$errorButton: #ff0000;
+$errorButtonHover: #ff0000;
+//
+$facebook: #345eb9;
+$google: #c4402f;
+//
+$degrade: #c4402f;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Fonts
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Normalize
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+//
+html {
+  font-size: 62.5%;
+  font-family: "Raleway", sans-serif;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Others
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//HEADER
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $black1;
+  font-size: 2.5rem;
+  .logo {
+    display: flex;
+    align-items: center;
+    h1 {
+      color: $whiteFont;
+      cursor: default;
+      font-family: "DM Serif Display", serif;
+    }
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    i {
+      cursor: pointer;
+    }
+  }
+
+  .cart {
+    ul {
+      list-style: none;
+      .cart-submenu {
+        position: relative;
+
+        i {
+          color: #464b52;
+        }
+
+        #cart {
+          display: none;
+
+          #cart-list {
+            font-size: 2rem;
+            font-weight: normal;
+          }
+        }
+      }
+      .cart-submenu:hover #cart {
+        display: block;
+        position: absolute;
+        color: $whiteFont;
+        right: 0;
+        top: 100%;
+        z-index: 1;
+        background-color: #16191c;
+        padding: 2rem;
+        min-height: 40rem;
+        min-width: 30rem;
+
+        table {
+          text-align: center;
+
+          thead {
+            tr {
+              height: 5rem;
+            }
+          }
+
+          tbody {
+            tr {
+              height: 5rem;
+              td {
+                font-size: 2rem;
+                text-align: center;
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+                button {
+                  background-color: transparent;
+                  border-color: transparent;
+                  cursor: pointer;
+                  transition: all .3s;
+                }
+                button:hover {
+                  transform: scale(1.2);
+                }
+              }
+            }
+          }
+        }
+        p{
+          span{
+            font-size: 3rem;
+          }
+        }
+
+        button {
+          margin: 0.5rem 0;
+          font-size: 2rem;
+          transition: all 0.3s;
+        }
+
+        .reset-btn {
+          width: 100%;
+          background-color: transparent;
+          color: red;
+          border-radius: 0;
+          padding: 1rem;
+          border-color: red;
+          cursor: pointer;
+        }
+
+        .pay-btn {
+          width: 100%;
+          background-color: #00a9c4;
+          border-radius: 0%;
+          padding: 1rem;
+          border-color: #00a9c4;
+          visibility: hidden;
+          text-decoration: none;
+          color: white;
+          width: 100%;
+          cursor: pointer;
+        }
+
+        .pay-btn:hover {
+          background-color: #08cceb;
+          border-color: #08cceb;
+        }
+      }
+    }
+  }
+}
+//MAIN
+main {
+  background-color: $black3;
+  .hero {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 61, 172, 1) 0%,
+      rgba(0, 158, 177, 1) 100%
+    );
+    img {
+      width: 100%;
+      height: auto;
+    }
+    .hero-bar {
+      height: 5rem;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 61, 172, 1) 0%,
+        rgba(0, 158, 177, 1) 100%
+      );
+    }
+  }
+
+  .courses {
+    width: 80%;
+    max-width: 90rem;
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      font-size: 3.5rem;
+      color: $whiteFont;
+    }
+    .courses-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .courses-card {
+        margin: 1.5rem;
+        color: $whiteFont;
+
+        .courses-card-info {
+          padding: 1rem;
+          background-color: $black2;
+          h3 {
+            font-size: 2rem;
+          }
+          h4 {
+            font-size: 1.5rem;
+          }
+
+          .courses-card-info-price {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            p {
+              font-size: 2rem;
+              text-decoration: line-through;
+            }
+            h3 {
+              color: red;
+              font-size: 3rem;
+            }
+          }
+
+          button {
+            width: 100%;
+            padding: 1rem;
+            background-color: $succButton;
+            border: 0px;
+            color: $whiteFont;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: all 0.3s;
+          }
+          button:hover {
+            background-color: $succButtonHover;
+          }
+        }
+      }
+    }
+  }
+
+  .confirm {
+  }
+
+  .done {
+  }
+}
+//FOOTER
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: $black1;
+  font-size: 2rem;
+  ul {
+    list-style: none;
+    li {
+      margin: 1.5rem 0;
+      a {
+        color: $whiteFont;
+        text-decoration: none;
+      }
+    }
+  }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MQ
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

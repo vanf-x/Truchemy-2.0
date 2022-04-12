@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "picture": "../assets/curso1.jpg",
+    "name": "HTML y CSS",
+    "tutor": "Hari Seldon",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 2,
+    "picture": "../assets/curso2.jpg",
+    "name": "Javascript",
+    "tutor": "Lord Dorwin",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 3,
+    "picture": "../assets/curso3.jpg",
+    "name": "Framework React",
+    "tutor": "Lundin Crast",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 4,
+    "picture": "../assets/curso4.jpg",
+    "name": "Linux desde O",
+    "tutor": "Gaal Dornick",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 5,
+    "picture": "../assets/curso5.jpg",
+    "name": "Hacking ético",
+    "tutor": "Bor Alurin",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 6,
+    "picture": "../assets/curso6.jpg",
+    "name": "Java SE + extra",
+    "tutor": "Yate Fulham",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 7,
+    "picture": "../assets/curso7.jpg",
+    "name": "Framework Spring",
+    "tutor": "Salvor Hardin",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 8,
+    "picture": "../assets/curso8.jpg",
+    "name": "BBDD y MySQL",
+    "tutor": "Jord Fara",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 9,
+    "picture": "../assets/curso9.jpg",
+    "name": "Framework Angular",
+    "tutor": "Lewis Pirenne",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 10,
+    "picture": "../assets/curso10.jpg",
+    "name": "MongoDB de O a pro",
+    "tutor": "Hober Mallow",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 11,
+    "picture": "../assets/curso11.jpg",
+    "name": "Curso de Node JS",
+    "tutor": "Tomaz Sutt",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 12,
+    "picture": "../assets/curso12.jpg",
+    "name": "Fundamentos de Kotlin",
+    "tutor": "Gladia Solaria",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 13,
+    "picture": "../assets/curso13.jpg",
+    "name": "C++ para principiantes",
+    "tutor": "Daneel Olivaw",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 14,
+    "picture": "../assets/curso14.jpg",
+    "name": "C# avanzado",
+    "tutor": "Elijah Baley",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 15,
+    "picture": "../assets/curso15.jpg",
+    "name": "Cobol y Mainframe",
+    "tutor": "Dors Venabili",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 16,
+    "picture": "../assets/curso16.jpg",
+    "name": "Python desde O",
+    "tutor": "Raych Seldon",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 17,
+    "picture": "../assets/curso17.jpg",
+    "name": "Laravel avanzado",
+    "tutor": "Giskard Reventlov",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 18,
+    "picture": "../assets/curso18.jpg",
+    "name": "Backend con PHP",
+    "tutor": "Han Fastolfe",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 19,
+    "picture": "../assets/curso19.jpg",
+    "name": "Maqueta con Bootstrap",
+    "tutor": "Kelden Amadiro",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  },
+  {
+    "id": 20,
+    "picture": "../assets/curso20.jpg",
+    "name": "Django de O a pro",
+    "tutor": "Eto Demerzel",
+    "stars": "./assets/estrellas.png",
+    "price": 89.99,
+    "offer": 10
+  }
+]

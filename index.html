@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <script src="https://kit.fontawesome.com/121e7d6fbd.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Truchemy2.0</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/logo letra.png" alt="logo">
+                </a>
+                <h1>Truchemy</h1>
+            </div>
+            <!-- <div class="search">
+                <input type="text" id="search" placeholder="Encuentra tu curso">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div> -->
+            <div class="cart">
+                <ul>
+                    <li class="cart-submenu">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div id="cart">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <!-- <th>Cantidad</th> -->
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="courses-list"></tbody>
+                            </table>
+                            <p class="total-amount" style="text-align: right;">
+                                Total: $
+                                <span id="total">0.00</span>
+                            </p>
+                            <button class="reset-btn" id="reset-btn">Vaciar carrito</button>
+                            <button class="pay-btn" id="pay-btn">
+                                Proceder a pagar
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <section class="hero">
+                <img src="assets/hero.jpg" alt="">
+                <div class="hero-bar"></div>
+            </section>
+            <section class="courses">
+                <h2>Cursos en línea</h2>
+                <div class="courses-container">
+
+                    <!-- <div class="courses-card">
+                        <div class="courses-card-img">
+                            <img src="./assets/curso1.jpg" alt="curso1">
+                        </div>
+                        <div class="courses-card-info">
+                            <h3>Curso de pupqmem</h3>
+                            <h4>Tutor x</h4>
+                            <img src="./assets/estrellas.png" alt="stars">
+                            <div class="courses-card-info-price">
+                                <p>$99.99</p> <h3>$10</h3>
+                            </div>
+                            <button>Agregar</button>
+                        </div>
+                    </div> -->
+
+                </div>
+            </section>
+            <section class="confirm"></section>
+            <section class="done"></section>
+        </main>
+        <footer>
+            <div class="footer-right">
+                <ul>
+                    <li>
+                        <a href="#">Políticas de calidad</a>
+                    </li>
+                    <li>
+                        <a href="#">Políticas de navegación</a>
+                    </li>
+                    <li>
+                        <a href="#">Políticas de contenido</a>
+                    </li>
+                    <li>
+                        <a href="#">Políticas de la empresa</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-left">
+                <ul>
+                    <li>
+                        <a href="#">Quiénes somos</a>
+                    </li>
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#">Formá parte</a>
+                    </li>
+                    <li>
+                        <a href="#">Sobre el desarrollador</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
