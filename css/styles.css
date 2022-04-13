@@ -79,6 +79,53 @@ html {
     transform: rotate(25deg);
   }
 }
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 10rem auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: sk-bounce 2s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+body {
+  background-color: #151518;
+}
+
 header {
   display: flex;
   justify-content: space-around;
@@ -205,7 +252,7 @@ header .cart ul .cart-submenu:hover #cart .pay-btn:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 .nav-search .nav-search-input input {
   border-radius: 9rem 0 0 9rem;
@@ -323,6 +370,126 @@ main .courses .courses-container .courses-card .courses-card-info button {
 main .courses .courses-container .courses-card .courses-card-info button:hover {
   background-color: #08cceb;
 }
+
+.confirm {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 120rem;
+  min-height: 80vh;
+  margin: 0 auto;
+}
+.confirm .confirm-left {
+  border: 1px solid white;
+  width: 50%;
+  min-width: 35rem;
+  padding: 2rem;
+}
+.confirm .confirm-left h2 {
+  margin: 0;
+  font-size: 3rem;
+  color: #eaedf2;
+}
+.confirm .confirm-left table {
+  font-size: 2rem;
+  color: #eaedf2;
+}
+.confirm .confirm-left table tbody tr td {
+  width: 10rem;
+  text-align: center;
+  background-color: #464b52;
+}
+.confirm .confirm-left table tbody tr td img {
+  width: 100%;
+}
+.confirm .confirm-left table tbody tr td button {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: #fa7979;
+  transition: all 0.3s;
+}
+.confirm .confirm-left table tbody tr td button:hover {
+  color: #f8a0a0;
+}
+.confirm .confirm-left p {
+  font-size: 3rem;
+  color: #eaedf2;
+}
+.confirm .confirm-right {
+  border: 1px solid white;
+  margin: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  min-width: 35rem;
+}
+.confirm .confirm-right h2 {
+  margin: 0;
+  font-size: 3rem;
+  color: #eaedf2;
+}
+.confirm .confirm-right .form {
+  min-width: 35rem;
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+.confirm .confirm-right .form input[type=text] {
+  margin-bottom: 1rem;
+}
+.confirm .confirm-right .form .form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.confirm .confirm-right .form .form-buttons .facebook {
+  background-color: #345eb9;
+  border: 0;
+  border-radius: 0;
+  width: 50%;
+  flex-grow: 1;
+  color: #eaedf2;
+  padding: 0.5em;
+  cursor: not-allowed;
+  margin-right: 0.5rem;
+}
+.confirm .confirm-right .form .form-buttons .google {
+  background-color: #c4402f;
+  border: 0;
+  border-radius: 0;
+  width: 50%;
+  flex-grow: 1;
+  color: #eaedf2;
+  padding: 0.5em;
+  cursor: not-allowed;
+  margin-left: 0.5rem;
+}
+.confirm .confirm-right .form input[type=submit] {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0;
+  border: 0;
+  padding: 1rem;
+  color: #eaedf2;
+  font-weight: bold;
+  background-color: #00a9c4;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.confirm .confirm-right .form input[type=submit]:hover {
+  background-color: #08cceb;
+}
+
 footer {
   display: flex;
   justify-content: space-around;

@@ -19,12 +19,6 @@
                 </a>
                 <h1>Truchemy</h1>
             </div>
-            <!-- <div class="search">
-                <input type="text" id="search" placeholder="Encuentra tu curso">
-                <button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div> -->
             <div class="cart">
                 <ul>
                     <li class="cart-submenu">
@@ -70,10 +64,9 @@
             </div>
         </div>
         <main>
+            <!-- HERO SECTION -->
             <section class="hero">
-
                 <img src="assets/hero.jpg" alt="hero-img">
-
                 <div class="hero-bar">
                     <div class="hero-bar-quote">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -97,33 +90,55 @@
                         </div>
                     </div>
                 </div>
-
             </section>
-
+            <!-- COURSES SECTION -->
             <section class="courses">
                 <h2>Cursos en línea</h2>
-                <div class="courses-container">
-
-                    <!-- <div class="courses-card">
-                        <div class="courses-card-img">
-                            <img src="./assets/curso1.jpg" alt="curso1">
-                        </div>
-                        <div class="courses-card-info">
-                            <h3>Curso de pupqmem</h3>
-                            <h4>Tutor x</h4>
-                            <img src="./assets/estrellas.png" alt="stars">
-                            <div class="courses-card-info-price">
-                                <p>$99.99</p> <h3>$10</h3>
-                            </div>
-                            <button>Agregar</button>
-                        </div>
-                    </div> -->
-
-                </div>
+                <div class="courses-container"></div>
             </section>
-            <section class="confirm"></section>
-            <section class="done"></section>
         </main>
+        
+        <!-- CONFIRM SECTION -->
+        <section class="confirm">
+            <!-- CONFIRM LEFT -->
+            <section class="confirm-left">
+                <h2>Tu cesta</h2>
+                <table>
+                    <tbody id="confirm-left-courses-list"></tbody>
+                </table>
+                <p class="total-amount" style="text-align: right;">
+                    Total: $
+                    <span id="confirm-total">0.00</span>
+                </p>
+            </section>
+            <!-- CONFIRM RIGHT -->
+            <section class="confirm-right">
+                <h2>Confirmá tu compra</h2>
+                <form id="form" class="form">
+                    <div class="form-user-name"></div>
+                    <input
+                        type="text"
+                        name="user-name"
+                        id="user-name"
+                        placeholder="Nombre de usuario"
+                    >
+                    <div class="form-user-mail">
+                        <input
+                            type="text"
+                            name="user-mail"
+                            id="user-mail"
+                            placeholder="Correo electrónico"
+                        >
+                        <div class="form-buttons">
+                            <button class="facebook">Facebook</button>
+                            <button class="google">Google</button>
+                        </div>
+                        <input type="submit" value="Confirmar">
+                    </div>
+                </form>
+            </section>
+        </section>
+        <section class="done"></section>
         <footer>
             <div class="footer-right">
                 <ul>

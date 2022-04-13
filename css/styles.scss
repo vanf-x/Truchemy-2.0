@@ -101,8 +101,51 @@ html {
     transform: rotate(25deg);
   }
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Spinner
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 10rem auto;
+}
 
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body{
+background-color: $black3;
+}
 //HEADER
 header {
   display: flex;
@@ -258,7 +301,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem;
 
     input {
       border-radius: 9rem 0 0 9rem;
@@ -288,6 +331,10 @@ header {
 main {
   background-color: $black3;
   .hero {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // display: none;
     background: linear-gradient(
       90deg,
       rgba(0, 61, 172, 1) 0%,
@@ -332,6 +379,10 @@ main {
   }
 
   .courses {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // display: none;
     width: 80%;
     max-width: 90rem;
     margin: 0 auto;
@@ -394,11 +445,140 @@ main {
     }
   }
 
-  .confirm {
-  }
+  
+}
+.confirm {
+  display: flex!important;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 120rem;
+  min-height: 80vh;
+  margin: 0 auto;
+  .confirm-left {
+    border: 1px solid white;
+    width: 50%;
+    min-width: 35rem;
+    padding: 2rem;
+    h2 {
+      margin: 0;
+      font-size: 3rem;
+      color: $whiteFont;
+    }
+    table{
+      font-size: 2rem;
+      color: $whiteFont;
+      tbody{
+        tr{
+          td{
+            width: 10rem;
+            text-align: center;
+            background-color: $black4;
 
-  .done {
+            img{
+              width: 100%;
+            }
+            button{
+              background-color: transparent;
+              border-color: transparent;
+              cursor: pointer;
+              color: rgb(250, 121, 121);
+              transition: all .3s;
+            }
+            button:hover{
+              // animation: trash-bin 1s linear infinite;
+              color: rgb(248, 160, 160);
+
+            }
+          }
+        }
+      }
+    }
+    p{
+      font-size: 3rem;
+      color: $whiteFont;
+    }
   }
+  .confirm-right {
+    border: 1px solid white;
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    min-width: 35rem;
+    h2 {
+      margin: 0;
+      font-size: 3rem;
+      color: $whiteFont;
+    }
+
+    .form {
+      min-width: 35rem;
+      // border: 1px solid white;
+      font-size: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5rem;
+
+      input[type="text"] {
+        margin-bottom: 1rem;
+      }
+      .form-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 1rem;
+
+        .facebook {
+          background-color: $facebook;
+          border: 0;
+          border-radius: 0;
+          width: 50%;
+          flex-grow: 1;
+          color: $whiteFont;
+          padding: 0.5em;
+          cursor: not-allowed;
+          margin-right: 0.5rem;
+        }
+        .google {
+          background-color: $google;
+          border: 0;
+          border-radius: 0;
+          width: 50%;
+          flex-grow: 1;
+          color: $whiteFont;
+          padding: 0.5em;
+          cursor: not-allowed;
+          margin-left: 0.5rem;
+
+        }
+      }
+      input[type="submit"] {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 0;
+        border: 0;
+        padding: 1rem;
+        color: $whiteFont;
+        font-weight: bold;
+        background-color: $succButton;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: $succButtonHover;
+      }
+    }
+  }
+}
+
+.done {
 }
 //FOOTER
 footer {

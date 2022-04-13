@@ -10,9 +10,15 @@ class Course {
     this.offer = offer;
   }
 }
+
+//FALTA: ocultar y mostrar pantallas, programar carrito de confirmación, verificar mail y nombre de usuario con expreg, mensaje final.
+
 //
 //CONST
-
+const $coursesList = document.querySelector("#courses-list");
+const $confirmCoursesList = document.querySelector(
+  "#confirm-left-courses-list"
+);
 //
 //LET
 let $addToCartButton;
@@ -30,6 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document
     .querySelector("#search-button")
     .addEventListener("click", searchCourse);
+  document.querySelector("#pay-btn").addEventListener("click", proceedToPay);
 });
 //
 //FUNCTIONS
@@ -106,12 +113,14 @@ function selectCourse() {
           if (n > 1) {
             cart.pop();
             notification("Ya has agregado este curso", 2);
-            showCoursesInCart();
+            showCoursesInCart($coursesList);
+            showCoursesInCart($confirmCoursesList);
             return;
           }
 
           notification("Curso agregado con éxito", 1);
-          showCoursesInCart();
+          showCoursesInCart($coursesList);
+          showCoursesInCart($confirmCoursesList);
           return;
         }
       });
@@ -125,7 +134,8 @@ function deleteCourse() {
   $deleteCourseButton.forEach((el) => {
     el.addEventListener("click", (e) => {
       cart = cart.filter((el) => el[0].id != e.target.parentElement.dataset.id);
-      showCoursesInCart();
+      showCoursesInCart($coursesList);
+      showCoursesInCart($confirmCoursesList);
     });
   });
 
@@ -133,10 +143,14 @@ function deleteCourse() {
 }
 //
 //Add HTML to cart
-function showCoursesInCart() {
-  const coursesList = document.querySelector("#courses-list");
-  clearHTML(coursesList);
+function showCoursesInCart(value) {
+  //
+
+  clearHTML(value);
+  // clearHTML($confirmCoursesList);
+
   const $fragment = document.createDocumentFragment();
+
   cart.forEach((el) => {
     const { id, picture, name, tutor, stars, price, offer } = el[0];
     const tr = document.createElement("tr");
@@ -148,7 +162,7 @@ function showCoursesInCart() {
         `;
     $fragment.appendChild(tr);
   });
-  coursesList.appendChild($fragment);
+  value.appendChild($fragment);
   $deleteCourseButton = document.querySelectorAll(".delete-course-button");
   deleteCourse();
   showPayButton();
@@ -183,7 +197,8 @@ function resetCart() {
   cart = [];
   totalAmmount = 0;
   setTotalAmmount();
-  showCoursesInCart();
+  showCoursesInCart($coursesList);
+  showCoursesInCart($confirmCoursesList);
 }
 //
 //sets and shows the total ammount in cart
@@ -193,6 +208,7 @@ function setTotalAmmount() {
     totalAmmount += el[0].offer;
   });
   document.querySelector("#total").textContent = totalAmmount;
+  document.querySelector("#confirm-total").textContent = totalAmmount;
 }
 //
 //if cart has 1 or more courses, shows payment button
@@ -205,10 +221,11 @@ function showPayButton() {
   $paybutton.style.display = "flex";
 }
 //
-//
+//searches courses by name
 function searchCourse() {
   const $coursesContainer = document.querySelector(".courses-container");
   const $searchResult = document.querySelector("#search");
+  //filter by name
   let filteredCourse = coursesArray.filter((course) =>
     course.name
       .toLowerCase()
@@ -218,14 +235,16 @@ function searchCourse() {
 
   if (filteredCourse.length === 0) {
     notification("No se encontró ningún curso con ese nombre", 2);
+    $searchResult.value = "";
     return;
   }
 
-  if(filteredCourse.length === 1){
+  if (filteredCourse.length === 1) {
     notification(`Se encontró ${filteredCourse.length} resultado`, 1);
     clearHTML($coursesContainer);
     showCourses(filteredCourse);
     restoreCourses($coursesContainer);
+    $searchResult.value = "";
     return;
   }
 
@@ -233,16 +252,20 @@ function searchCourse() {
   clearHTML($coursesContainer);
   showCourses(filteredCourse);
   restoreCourses($coursesContainer);
+  $searchResult.value = "";
 }
 //
-//
+//restore courses after search
 function restoreCourses(value) {
   const $coursesContainer = document.querySelector(".courses-container");
   const div = document.createElement("div");
+
   div.innerHTML = `
       <button class="restore-courses-buton" id="restore-courses-button">Volver atrás</button>
   `;
+
   value.appendChild(div);
+
   document
     .querySelector("#restore-courses-button")
     .addEventListener("click", () => {
@@ -251,4 +274,22 @@ function restoreCourses(value) {
     });
 }
 //
+//shows confirm section
+function proceedToPay() {
+  hide(document.querySelector(".courses"));
+  hide(document.querySelector(".hero"));
+  hide(document.querySelector(".nav-search"));
+
+    show(document.querySelector('.confirm'));
+    restoreCourses(document.querySelector('.confirm'))
+}
 //
+//display inline to something
+function show(element, value) {
+  element.style.display = value || "inline";
+}
+//
+//display none to something
+function hide(element, value) {
+  element.style.display = value || "none";
+}
