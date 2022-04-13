@@ -12,6 +12,73 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
+.toast {
+  position: fixed;
+  font-size: 2rem;
+  margin: 0;
+  z-index: 2;
+  color: #eaedf2;
+  padding: 1rem;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.show-up-toast {
+  animation: show-up-toast 0.5s;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: #9b0606;
+}
+
+.restore-courses-buton {
+  font-size: 4rem;
+  color: #9b0606;
+  background-color: transparent;
+  border-color: #9b0606;
+  border-radius: 9rem;
+  cursor: pointer;
+  margin: 4rem 0;
+  transition: all 0.3s;
+  min-width: 70vw;
+}
+
+.restore-courses-buton:hover {
+  border-color: #c91e1e;
+  color: #c91e1e;
+}
+
+@keyframes show-up-toast {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes trash-bin {
+  0% {
+    transform: rotate(25deg);
+  }
+  25% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  75% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
 header {
   display: flex;
   justify-content: space-around;
@@ -22,18 +89,17 @@ header {
 header .logo {
   display: flex;
   align-items: center;
+  margin: 0;
 }
 header .logo h1 {
   color: #eaedf2;
   cursor: default;
   font-family: "DM Serif Display", serif;
+  margin: 0;
 }
-header .search {
-  display: flex;
-  align-items: center;
-}
-header .search i {
-  cursor: pointer;
+header .logo img {
+  width: 80%;
+  height: auto;
 }
 header .cart ul {
   list-style: none;
@@ -87,7 +153,7 @@ header .cart ul .cart-submenu:hover #cart table tbody tr td button {
   transition: all 0.3s;
 }
 header .cart ul .cart-submenu:hover #cart table tbody tr td button:hover {
-  transform: scale(1.2);
+  animation: trash-bin 1s linear infinite;
 }
 header .cart ul .cart-submenu:hover #cart p span {
   font-size: 3rem;
@@ -112,7 +178,9 @@ header .cart ul .cart-submenu:hover #cart .pay-btn {
   border-radius: 0%;
   padding: 1rem;
   border-color: #00a9c4;
-  visibility: hidden;
+  display: none;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: white;
   width: 100%;
@@ -123,6 +191,42 @@ header .cart ul .cart-submenu:hover #cart .pay-btn:hover {
   border-color: #08cceb;
 }
 
+.nav-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  position: sticky;
+  top: 0;
+  background-color: #464b52;
+  color: #eaedf2;
+}
+.nav-search .nav-search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.nav-search .nav-search-input input {
+  border-radius: 9rem 0 0 9rem;
+  border: 3px solid black;
+  border-right: 0;
+}
+.nav-search .nav-search-input button {
+  border-radius: 0 9rem 9rem 0;
+  border: 3px solid black;
+  height: 3.2rem;
+  background-color: #2b2b2c;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.nav-search .nav-search-input button i {
+  color: red;
+}
+.nav-search .nav-search-input button:hover {
+  background-color: black;
+}
+
 main {
   background-color: #151518;
 }
@@ -131,12 +235,35 @@ main .hero {
 }
 main .hero img {
   width: 100%;
-  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
 }
 main .hero .hero-bar {
-  height: 5rem;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background: linear-gradient(90deg, #003dac 0%, #009eb1 100%);
+}
+main .hero .hero-bar .hero-bar-quote {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #eaedf2;
+}
+main .hero .hero-bar .hero-bar-quote i {
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+main .hero .hero-bar .hero-bar-quote h3 {
+  margin: 0;
+}
+main .hero .hero-bar .hero-bar-quote h4 {
+  margin: 0;
 }
 main .courses {
   width: 80%;
@@ -145,7 +272,7 @@ main .courses {
 }
 main .courses h2 {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 5rem;
   color: #eaedf2;
 }
 main .courses .courses-container {
@@ -163,10 +290,11 @@ main .courses .courses-container .courses-card .courses-card-info {
   background-color: #2b2b2c;
 }
 main .courses .courses-container .courses-card .courses-card-info h3 {
-  font-size: 2rem;
+  font-size: 2.25rem;
+  margin: 0;
 }
 main .courses .courses-container .courses-card .courses-card-info h4 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price {
   display: flex;
@@ -174,12 +302,12 @@ main .courses .courses-container .courses-card .courses-card-info .courses-card-
   align-items: center;
 }
 main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price p {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-decoration: line-through;
 }
 main .courses .courses-container .courses-card .courses-card-info .courses-card-info-price h3 {
   color: red;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 main .courses .courses-container .courses-card .courses-card-info button {
   width: 100%;

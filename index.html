@@ -11,6 +11,7 @@
         <title>Truchemy2.0</title>
     </head>
     <body>
+        <div id="notification"></div>
         <header>
             <div class="logo">
                 <a href="index.html">
@@ -35,7 +36,6 @@
                                         <th>Imagen</th>
                                         <th>Nombre</th>
                                         <th>Precio</th>
-                                        <!-- <th>Cantidad</th> -->
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -54,11 +54,52 @@
                 </ul>
             </div>
         </header>
+        <div class="nav-search">
+            <label for="search" style="margin-right: 10px;">Aprendé algo nuevo!</label>
+            <div class="nav-search-input">
+                <input
+                    type="text"
+                    id="search"
+                    name="search"
+                    style="padding-left: 10px;"
+                    placeholder="Buscá tu próximo curso"
+                >
+                <button id="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
         <main>
             <section class="hero">
-                <img src="assets/hero.jpg" alt="">
-                <div class="hero-bar"></div>
+
+                <img src="assets/hero.jpg" alt="hero-img">
+
+                <div class="hero-bar">
+                    <div class="hero-bar-quote">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <div class="hero-bar-quote-subtitles">
+                            <h3>Más de 20000 cursos</h3>
+                            <h4>actualizados constantemente</h4>
+                        </div>
+                    </div>
+                    <div class="hero-bar-quote">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <div class="hero-bar-quote-subtitles">
+                            <h3>Los mejores tutores</h3>
+                            <h4>calificados para ayudarte a crecer</h4>
+                        </div>
+                    </div>
+                    <div class="hero-bar-quote">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div class="hero-bar-quote-subtitles">
+                            <h3>Diferenciate del resto</h3>
+                            <h4>y lográ todas tus metas</h4>
+                        </div>
+                    </div>
+                </div>
+
             </section>
+
             <section class="courses">
                 <h2>Cursos en línea</h2>
                 <div class="courses-container">

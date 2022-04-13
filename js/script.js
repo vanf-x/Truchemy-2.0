@@ -15,16 +15,21 @@ class Course {
 
 //
 //LET
-
+let $addToCartButton;
+let $deleteCourseButton;
+let totalAmmount = 0;
 //
 //ARRAY
 let cart = [];
 let coursesArray = [];
-let addToCartButton;
 //
 //EXECUTION STARTS
 window.addEventListener("DOMContentLoaded", () => {
   getData();
+  document.querySelector("#reset-btn").addEventListener("click", resetCart);
+  document
+    .querySelector("#search-button")
+    .addEventListener("click", searchCourse);
 });
 //
 //FUNCTIONS
@@ -47,14 +52,13 @@ function fillCoursesArray(value) {
     const course = new Course(id, picture, name, tutor, stars, price, offer);
     coursesArray = [...coursesArray, course];
   });
-  //   coursesArray.forEach((el) => console.log(el));
-  showCourses();
+  showCourses(coursesArray);
 }
 //
 //creates HTML for the courses in coursesArray
-function showCourses() {
+function showCourses(value) {
   const $fragment = document.createDocumentFragment();
-  coursesArray.forEach((el) => {
+  value.forEach((el) => {
     const { id, picture, name, tutor, stars, price, offer } = el;
     const div = document.createElement("div");
     div.classList.add("courses-card");
@@ -76,30 +80,61 @@ function showCourses() {
     $fragment.appendChild(div);
   });
   document.querySelector(".courses-container").appendChild($fragment);
-  addToCartButton = document.querySelectorAll(".add-to-cart-button");
+  $addToCartButton = document.querySelectorAll(".add-to-cart-button");
   selectCourse();
 }
-
+//
 //Add a course to the cart
 function selectCourse() {
   let selectedCourse;
-  addToCartButton.forEach((el) => {
+  let n = 0;
+  $addToCartButton.forEach((el) => {
     el.addEventListener("click", (e) => {
-      // xd();
       coursesArray.forEach((el) => {
         selectedCourse = coursesArray.filter(
           (course) => course.id == e.target.dataset.id
         );
       });
+
+      n = 0;
       cart = [...cart, selectedCourse];
+
+      cart.forEach((el) => {
+        if (el[0].name.includes(selectedCourse[0].name)) {
+          n++;
+
+          if (n > 1) {
+            cart.pop();
+            notification("Ya has agregado este curso", 2);
+            showCoursesInCart();
+            return;
+          }
+
+          notification("Curso agregado con éxito", 1);
+          showCoursesInCart();
+          return;
+        }
+      });
+    });
+  });
+  setTotalAmmount();
+}
+//
+//deletes course with the trash-bin button
+function deleteCourse() {
+  $deleteCourseButton.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      cart = cart.filter((el) => el[0].id != e.target.parentElement.dataset.id);
       showCoursesInCart();
     });
   });
+
+  setTotalAmmount();
 }
 //
 //Add HTML to cart
 function showCoursesInCart() {
-  const coursesList =   document.querySelector("#courses-list");
+  const coursesList = document.querySelector("#courses-list");
   clearHTML(coursesList);
   const $fragment = document.createDocumentFragment();
   cart.forEach((el) => {
@@ -109,11 +144,14 @@ function showCoursesInCart() {
                 <td><img src="${picture}"></td>
                 <td>${name}</td>
                 <td>$${offer}</td>
-                <td><button><i class="fa-solid fa-trash-can"></i></button></td>
+                <td><button class="delete-course-button" data-id="${id}"><i class="fa-solid fa-trash-can"></i></button></td>
         `;
     $fragment.appendChild(tr);
   });
   coursesList.appendChild($fragment);
+  $deleteCourseButton = document.querySelectorAll(".delete-course-button");
+  deleteCourse();
+  showPayButton();
 }
 //
 //Prevets HTML multiplication
@@ -122,3 +160,95 @@ function clearHTML(value) {
     value.firstChild.remove();
   }
 }
+//
+//Shows a message
+function notification(message, value) {
+  const $notification = document.getElementById("notification");
+  const p = document.createElement("p");
+  p.textContent = message;
+
+  if (value == 1) p.classList.add("toast", "success", "show-up-toast");
+  if (value == 2) p.classList.add("toast", "error", "show-up-toast");
+
+  $notification.appendChild(p);
+
+  setTimeout(() => {
+    p.remove();
+  }, 1500);
+}
+//
+//
+function resetCart() {
+  if (cart.length > 0) notification("El carrito ha sido vaciado", 1);
+  cart = [];
+  totalAmmount = 0;
+  setTotalAmmount();
+  showCoursesInCart();
+}
+//
+//sets and shows the total ammount in cart
+function setTotalAmmount() {
+  totalAmmount = 0;
+  cart.forEach((el) => {
+    totalAmmount += el[0].offer;
+  });
+  document.querySelector("#total").textContent = totalAmmount;
+}
+//
+//if cart has 1 or more courses, shows payment button
+function showPayButton() {
+  const $paybutton = document.querySelector("#pay-btn");
+  if (cart.length === 0) {
+    $paybutton.style.display = "none";
+    return;
+  }
+  $paybutton.style.display = "flex";
+}
+//
+//
+function searchCourse() {
+  const $coursesContainer = document.querySelector(".courses-container");
+  const $searchResult = document.querySelector("#search");
+  let filteredCourse = coursesArray.filter((course) =>
+    course.name
+      .toLowerCase()
+      .trim()
+      .includes($searchResult.value.toLowerCase().trim())
+  );
+
+  if (filteredCourse.length === 0) {
+    notification("No se encontró ningún curso con ese nombre", 2);
+    return;
+  }
+
+  if(filteredCourse.length === 1){
+    notification(`Se encontró ${filteredCourse.length} resultado`, 1);
+    clearHTML($coursesContainer);
+    showCourses(filteredCourse);
+    restoreCourses($coursesContainer);
+    return;
+  }
+
+  notification(`Se encontraron ${filteredCourse.length} resultados`, 1);
+  clearHTML($coursesContainer);
+  showCourses(filteredCourse);
+  restoreCourses($coursesContainer);
+}
+//
+//
+function restoreCourses(value) {
+  const $coursesContainer = document.querySelector(".courses-container");
+  const div = document.createElement("div");
+  div.innerHTML = `
+      <button class="restore-courses-buton" id="restore-courses-button">Volver atrás</button>
+  `;
+  value.appendChild(div);
+  document
+    .querySelector("#restore-courses-button")
+    .addEventListener("click", () => {
+      clearHTML(value);
+      showCourses(coursesArray);
+    });
+}
+//
+//
