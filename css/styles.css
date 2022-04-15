@@ -38,7 +38,7 @@ html {
 }
 
 .text-error {
-  color: #9b0606 !important;
+  color: rgba(255, 144, 104, 0.801) !important;
 }
 
 .d-n {
@@ -502,10 +502,13 @@ main .confirm .confirm-right .form {
   padding: 5rem;
 }
 main .confirm .confirm-right .form p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: left;
   align-self: flex-start;
   color: #eaedf2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 144, 104, 0.801);
 }
 main .confirm .confirm-right .form #cart-message {
   font-size: 2rem;

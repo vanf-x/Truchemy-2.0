@@ -326,20 +326,20 @@ function checkConfirmation() {
   uMail = userMail.test($userMail.value);
 
   if (!uName) {
-    $userNameConfirmation.classList.remove("d-n");
+    userError($userNameConfirmation);//to 394
     return;
   }
   console.log("1");
   $userNameConfirmation.classList.add("d-n");
 
   if (!uMail) {
-    $userMailConfirmation.classList.remove("d-n");
+    userError($userMailConfirmation);//to 394
     return;
   }
   $userMailConfirmation.classList.add("d-n");
 
   if (cart.length == 0){
-    $cartMessage.classList.remove("d-n");
+    userError($cartMessage);//to 394
     return;
   } 
 
@@ -369,7 +369,7 @@ function finalMessage() {
   }, 2000);
 }
 //
-//
+//creates a spinner
 function spinner(element) {
   const div = document.createElement("div");
   div.classList.add("sk-chase");
@@ -384,8 +384,16 @@ function spinner(element) {
   element.appendChild(div);
 }
 //
-//
+//reset user's info
 function resetUser() {
   $userMail.value = "";
   $userName.value = "";
+}
+//
+//user verification error
+function userError(value){
+  value.classList.remove("d-n");
+  setTimeout(()=>{
+    value.classList.add("d-n");
+  }, 1500)
 }

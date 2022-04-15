@@ -15,6 +15,7 @@ $errorButtonHover: rgb(201, 30, 30);
 $facebook: #345eb9;
 $google: #c4402f;
 //
+$textError: rgba(255, 144, 104, 0.801);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Fonts
@@ -61,7 +62,7 @@ html {
   background-color: $errorButton;
 }
 .text-error {
-  color: $errorButton !important;
+  color: $textError!important;
 }
 .d-n {
   display: none !important;
@@ -195,9 +196,11 @@ html {
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//BODY
 body {
   background-color: $black3;
 }
+//
 //HEADER
 header {
   display: flex;
@@ -341,6 +344,7 @@ header {
     }
   }
 }
+//
 //NAV
 .nav-search {
   display: flex;
@@ -580,10 +584,13 @@ main {
         padding: 5rem;
 
         p {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           text-align: left;
           align-self: flex-start;
           color: $whiteFont;
+          margin-top: 0;
+          margin-bottom: .5rem;
+          color: rgba(255, 144, 104, 0.801);
         }
         #cart-message {
           font-size: 2rem;
@@ -639,6 +646,7 @@ main {
     }
   }
 }
+//
 //PAYMENT CONFIRMED
 .done {
   display: flex;
@@ -654,6 +662,7 @@ main {
     }
   }
 }
+//
 //FOOTER
 footer {
   display: flex;
@@ -678,8 +687,6 @@ footer {
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MQ
-@media only screen and (max-width: 992px) {
-}
 @media only screen and (max-width: 767px) {
   //CARD
   .courses-card {
@@ -788,5 +795,4 @@ footer {
     padding: 1rem 0;
   }
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
