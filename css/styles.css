@@ -502,7 +502,7 @@ main .confirm .confirm-right .form {
   padding: 5rem;
 }
 main .confirm .confirm-right .form p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-align: left;
   align-self: flex-start;
   color: #eaedf2;
@@ -516,6 +516,7 @@ main .confirm .confirm-right .form #cart-message {
 }
 main .confirm .confirm-right .form input[type=text] {
   margin-bottom: 1rem;
+  min-width: 35rem;
 }
 main .confirm .confirm-right .form .form-buttons {
   display: flex;
@@ -566,6 +567,7 @@ main .confirm .confirm-right .form input[type=submit] {
   align-items: center;
   text-align: center;
   min-height: 80vh;
+  padding: 3rem;
 }
 .done p {
   font-size: 4rem;

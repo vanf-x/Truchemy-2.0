@@ -584,7 +584,7 @@ main {
         padding: 5rem;
 
         p {
-          font-size: 1.1rem;
+          font-size: 1.3rem;
           text-align: left;
           align-self: flex-start;
           color: $whiteFont;
@@ -598,6 +598,7 @@ main {
         }
         input[type="text"] {
           margin-bottom: 1rem;
+          min-width: 35rem;
         }
         .form-buttons {
           display: flex;
@@ -654,6 +655,7 @@ main {
   align-items: center;
   text-align: center;
   min-height: 80vh;
+  padding: 3rem;
   p {
     font-size: 4rem;
     color: $whiteFont;
