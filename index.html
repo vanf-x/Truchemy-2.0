@@ -11,7 +11,11 @@
         <title>Truchemy2.0</title>
     </head>
     <body>
+        <!-- ***************************************************************** -->
+        <!-- NOTIFICATION -->
         <div id="notification"></div>
+        <!-- ***************************************************************** -->
+        <!-- HEADER -->
         <header>
             <div class="logo">
                 <a href="index.html">
@@ -41,13 +45,15 @@
                             </p>
                             <button class="reset-btn" id="reset-btn">Vaciar carrito</button>
                             <button class="pay-btn" id="pay-btn">
-                                Proceder a pagar
+                                <a href="#form">Proceder a pagar</a>
                             </button>
                         </div>
                     </li>
                 </ul>
             </div>
         </header>
+        <!-- ***************************************************************** -->
+        <!-- NAV -->
         <div class="nav-search">
             <label for="search" style="margin-right: 10px;">Aprendé algo nuevo!</label>
             <div class="nav-search-input">
@@ -59,10 +65,14 @@
                     placeholder="Buscá tu próximo curso"
                 >
                 <button id="search-button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#courses">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
                 </button>
             </div>
         </div>
+        <!-- ***************************************************************** -->
+        <!-- MAIN -->
         <main>
             <!-- HERO SECTION -->
             <section class="hero">
@@ -91,54 +101,70 @@
                     </div>
                 </div>
             </section>
+            <!-- ***************************************************************** -->
             <!-- COURSES SECTION -->
-            <section class="courses">
+            <section class="courses" id="courses">
                 <h2>Cursos en línea</h2>
                 <div class="courses-container"></div>
             </section>
+            <!-- ***************************************************************** -->
+            <!-- CONFIRM SECTION -->
+            <div class="" id="confirm-section" style="text-align: center;">
+                <section class="confirm">
+                    <!-- CONFIRM LEFT -->
+                    <section class="confirm-left">
+                        <h2>Tu cesta</h2>
+                        <table>
+                            <tbody id="confirm-left-courses-list"></tbody>
+                        </table>
+                        <p class="total-amount" style="text-align: right;">
+                            Total: $
+                            <span id="confirm-total">0.00</span>
+                        </p>
+                    </section>
+                    <!-- CONFIRM RIGHT -->
+                    <section class="confirm-right">
+                        <h2>Confirmá tu compra</h2>
+
+                        <form id="form" class="form">
+
+                            <div class="form-user-name">
+                                <input
+                                    type="text"
+                                    name="user-name"
+                                    id="user-name"
+                                    placeholder="Nombre de usuario"
+                                >
+                            </div>
+                            <p class="text-error d-n" id="user-name-confirmation">El nombre de usuario debe tener de 4 a 16 caracteres</p>
+                           
+                            <div class="form-user-mail">
+                                <input
+                                    type="text"
+                                    name="user-mail"
+                                    id="user-mail"
+                                    placeholder="Correo electrónico"
+                                >
+                            </div>
+                            <p class="text-error d-n" id="user-mail-confirmation">El mail debe tener el formato correo@correo.com</p>
+
+                            <div class="form-buttons">
+                                <button class="facebook" id="facebook-button">Facebook</button>
+                                <button class="google" id="google-button">Google</button>
+                            </div>
+
+                            <input type="submit" id="confirm-payment-button" value="Confirmar">
+                            <p id="cart-message" class="text-error d-n">La cesta no puede estar vacía</p>
+                        </form>
+                    </section>
+                </section>
+            </div>
+            <!-- ***************************************************************** -->
         </main>
-        
-        <!-- CONFIRM SECTION -->
-        <section class="confirm">
-            <!-- CONFIRM LEFT -->
-            <section class="confirm-left">
-                <h2>Tu cesta</h2>
-                <table>
-                    <tbody id="confirm-left-courses-list"></tbody>
-                </table>
-                <p class="total-amount" style="text-align: right;">
-                    Total: $
-                    <span id="confirm-total">0.00</span>
-                </p>
-            </section>
-            <!-- CONFIRM RIGHT -->
-            <section class="confirm-right">
-                <h2>Confirmá tu compra</h2>
-                <form id="form" class="form">
-                    <div class="form-user-name"></div>
-                    <input
-                        type="text"
-                        name="user-name"
-                        id="user-name"
-                        placeholder="Nombre de usuario"
-                    >
-                    <div class="form-user-mail">
-                        <input
-                            type="text"
-                            name="user-mail"
-                            id="user-mail"
-                            placeholder="Correo electrónico"
-                        >
-                        <div class="form-buttons">
-                            <button class="facebook">Facebook</button>
-                            <button class="google">Google</button>
-                        </div>
-                        <input type="submit" value="Confirmar">
-                    </div>
-                </form>
-            </section>
-        </section>
-        <section class="done"></section>
+        <!-- PAYMENT DONE -->
+        <section class="done d-n"></section>
+        <!-- ***************************************************************** -->
+        <!-- FOOTER -->
         <footer>
             <div class="footer-right">
                 <ul>
@@ -173,6 +199,7 @@
                 </ul>
             </div>
         </footer>
+        <!-- ***************************************************************** -->
         <script src="./js/script.js"></script>
     </body>
 </html>

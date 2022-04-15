@@ -37,6 +37,14 @@ html {
   background-color: #9b0606;
 }
 
+.text-error {
+  color: #9b0606 !important;
+}
+
+.d-n {
+  display: none !important;
+}
+
 .restore-courses-buton {
   font-size: 4rem;
   color: #9b0606;
@@ -44,9 +52,9 @@ html {
   border-color: #9b0606;
   border-radius: 9rem;
   cursor: pointer;
-  margin: 4rem 0;
   transition: all 0.3s;
   min-width: 70vw;
+  margin: 4rem 0;
 }
 
 .restore-courses-buton:hover {
@@ -79,47 +87,96 @@ html {
     transform: rotate(25deg);
   }
 }
-.spinner {
+.sk-chase {
   width: 40px;
   height: 40px;
   position: relative;
-  margin: 10rem auto;
+  animation: sk-chase 2.5s infinite linear both;
 }
 
-.double-bounce1, .double-bounce2 {
+.sk-chase-dot {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background-color: #333;
-  opacity: 0.6;
   position: absolute;
-  top: 0;
   left: 0;
-  -webkit-animation: sk-bounce 2s infinite ease-in-out;
-  animation: sk-bounce 2s infinite ease-in-out;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
 }
 
-.double-bounce2 {
-  -webkit-animation-delay: -1s;
+.sk-chase-dot:before {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: #fff;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2) {
   animation-delay: -1s;
 }
 
-@-webkit-keyframes sk-bounce {
-  0%, 100% {
-    -webkit-transform: scale(0);
-  }
-  50% {
-    -webkit-transform: scale(1);
+.sk-chase-dot:nth-child(3) {
+  animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4) {
+  animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5) {
+  animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6) {
+  animation-delay: -0.6s;
+}
+
+.sk-chase-dot:nth-child(1):before {
+  animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2):before {
+  animation-delay: -1s;
+}
+
+.sk-chase-dot:nth-child(3):before {
+  animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4):before {
+  animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5):before {
+  animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6):before {
+  animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
   }
 }
-@keyframes sk-bounce {
-  0%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
+@keyframes sk-chase-dot {
+  80%, 100% {
+    transform: rotate(360deg);
   }
+}
+@keyframes sk-chase-dot-before {
   50% {
+    transform: scale(0.4);
+  }
+  100%, 0% {
     transform: scale(1);
-    -webkit-transform: scale(1);
   }
 }
 body {
@@ -229,9 +286,12 @@ header .cart ul .cart-submenu:hover #cart .pay-btn {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: white;
   width: 100%;
   cursor: pointer;
+}
+header .cart ul .cart-submenu:hover #cart .pay-btn a {
+  color: white;
+  text-decoration: none;
 }
 header .cart ul .cart-submenu:hover #cart .pay-btn:hover {
   background-color: #08cceb;
@@ -370,55 +430,54 @@ main .courses .courses-container .courses-card .courses-card-info button {
 main .courses .courses-container .courses-card .courses-card-info button:hover {
   background-color: #08cceb;
 }
-
-.confirm {
-  display: flex !important;
+main .confirm {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   max-width: 120rem;
-  min-height: 80vh;
+  min-height: 100vh;
   margin: 0 auto;
 }
-.confirm .confirm-left {
-  border: 1px solid white;
+main .confirm .confirm-left {
   width: 50%;
   min-width: 35rem;
   padding: 2rem;
 }
-.confirm .confirm-left h2 {
+main .confirm .confirm-left h2 {
+  text-align-last: left;
   margin: 0;
-  font-size: 3rem;
+  margin-bottom: 5rem;
+  font-size: 4rem;
   color: #eaedf2;
 }
-.confirm .confirm-left table {
-  font-size: 2rem;
+main .confirm .confirm-left table {
+  font-size: 2.6rem;
   color: #eaedf2;
 }
-.confirm .confirm-left table tbody tr td {
+main .confirm .confirm-left table tbody tr td {
   width: 10rem;
   text-align: center;
   background-color: #464b52;
 }
-.confirm .confirm-left table tbody tr td img {
+main .confirm .confirm-left table tbody tr td img {
   width: 100%;
 }
-.confirm .confirm-left table tbody tr td button {
+main .confirm .confirm-left table tbody tr td button {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
   color: #fa7979;
   transition: all 0.3s;
 }
-.confirm .confirm-left table tbody tr td button:hover {
+main .confirm .confirm-left table tbody tr td button:hover {
   color: #f8a0a0;
 }
-.confirm .confirm-left p {
+main .confirm .confirm-left p {
   font-size: 3rem;
   color: #eaedf2;
 }
-.confirm .confirm-right {
-  border: 1px solid white;
+main .confirm .confirm-right {
   margin: 5rem 0;
   display: flex;
   flex-direction: column;
@@ -427,14 +486,14 @@ main .courses .courses-container .courses-card .courses-card-info button:hover {
   width: 40%;
   min-width: 35rem;
 }
-.confirm .confirm-right h2 {
+main .confirm .confirm-right h2 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 4rem;
   color: #eaedf2;
 }
-.confirm .confirm-right .form {
+main .confirm .confirm-right .form {
   min-width: 35rem;
-  font-size: 2rem;
+  font-size: 2.6rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -442,17 +501,28 @@ main .courses .courses-container .courses-card .courses-card-info button:hover {
   align-items: center;
   padding: 5rem;
 }
-.confirm .confirm-right .form input[type=text] {
+main .confirm .confirm-right .form p {
+  font-size: 1.5rem;
+  text-align: left;
+  align-self: flex-start;
+  color: #eaedf2;
+}
+main .confirm .confirm-right .form #cart-message {
+  font-size: 2rem;
+  align-self: center;
+}
+main .confirm .confirm-right .form input[type=text] {
   margin-bottom: 1rem;
 }
-.confirm .confirm-right .form .form-buttons {
+main .confirm .confirm-right .form .form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   margin-bottom: 1rem;
+  width: 100%;
 }
-.confirm .confirm-right .form .form-buttons .facebook {
+main .confirm .confirm-right .form .form-buttons .facebook {
   background-color: #345eb9;
   border: 0;
   border-radius: 0;
@@ -463,7 +533,7 @@ main .courses .courses-container .courses-card .courses-card-info button:hover {
   cursor: not-allowed;
   margin-right: 0.5rem;
 }
-.confirm .confirm-right .form .form-buttons .google {
+main .confirm .confirm-right .form .form-buttons .google {
   background-color: #c4402f;
   border: 0;
   border-radius: 0;
@@ -474,7 +544,7 @@ main .courses .courses-container .courses-card .courses-card-info button:hover {
   cursor: not-allowed;
   margin-left: 0.5rem;
 }
-.confirm .confirm-right .form input[type=submit] {
+main .confirm .confirm-right .form input[type=submit] {
   width: 100%;
   margin-bottom: 1rem;
   border-radius: 0;
@@ -486,8 +556,20 @@ main .courses .courses-container .courses-card .courses-card-info button:hover {
   cursor: pointer;
   transition: all 0.3s;
 }
-.confirm .confirm-right .form input[type=submit]:hover {
-  background-color: #08cceb;
+
+.done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+.done p {
+  font-size: 4rem;
+  color: #eaedf2;
+}
+.done p span {
+  color: #9b0606;
 }
 
 footer {
@@ -507,6 +589,92 @@ footer ul li {
 footer ul li a {
   color: #eaedf2;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .courses-card {
+    width: 35rem;
+    max-width: 35rem;
+  }
+  .courses-card .picture img {
+    min-width: 35rem;
+  }
+  .courses-card .courses-card-info h3 {
+    font-size: 4rem !important;
+    margin: 0;
+  }
+  .courses-card .courses-card-info h4 {
+    font-size: 2.5rem !important;
+  }
+  .courses-card .courses-card-info img {
+    width: 15rem;
+  }
+  .courses-card .courses-card-info .courses-card-info-price p {
+    font-size: 4rem !important;
+  }
+  .courses-card .courses-card-info .courses-card-info-price h3 {
+    font-size: 6rem !important;
+  }
+  .courses-card .courses-card-info button {
+    padding: 1.5rem !important;
+    font-size: 4rem !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .nav-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-search label {
+    margin-top: 1rem;
+  }
+
+  .hero img {
+    width: 100%;
+    height: auto;
+    min-height: 30vh;
+    object-fit: cover;
+  }
+
+  .hero-bar-quote {
+    flex-direction: column;
+    font-size: 1rem !important;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    color: #eaedf2;
+  }
+  .hero-bar-quote i {
+    font-size: 2rem;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .hero-bar-quote h3 {
+    margin: 0;
+  }
+  .hero-bar-quote h4 {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 486px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .confirm h2 {
+    margin-bottom: 3rem !important;
+  }
+
+  .form {
+    padding: 0 !important;
+  }
+
+  .restore-courses-buton {
+    min-width: 90vw !important;
+    padding: 1rem 0;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

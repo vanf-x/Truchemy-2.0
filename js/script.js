@@ -10,15 +10,15 @@ class Course {
     this.offer = offer;
   }
 }
-
-//FALTA: ocultar y mostrar pantallas, programar carrito de confirmación, verificar mail y nombre de usuario con expreg, mensaje final.
-
 //
 //CONST
 const $coursesList = document.querySelector("#courses-list");
 const $confirmCoursesList = document.querySelector(
   "#confirm-left-courses-list"
 );
+const $userName = document.querySelector("#user-name");
+const $userMail = document.querySelector("#user-mail");
+const $confirmPaymentButton = document.querySelector("#confirm-payment-button");
 //
 //LET
 let $addToCartButton;
@@ -31,12 +31,31 @@ let coursesArray = [];
 //
 //EXECUTION STARTS
 window.addEventListener("DOMContentLoaded", () => {
-  getData();
-  document.querySelector("#reset-btn").addEventListener("click", resetCart);
+  cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  showCoursesInCart($coursesList);// to 166
+  showCoursesInCart($confirmCoursesList);
+
+  getData();//to 64
+
+  document.querySelector("#reset-btn").addEventListener("click", resetCart);//to 215
+
   document
     .querySelector("#search-button")
-    .addEventListener("click", searchCourse);
-  document.querySelector("#pay-btn").addEventListener("click", proceedToPay);
+    .addEventListener("click", searchCourse);//to 247
+
+  document.querySelector("#facebook-button").addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+
+  document.querySelector("#google-button").addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+
+  $confirmPaymentButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    checkConfirmation();//to 310
+  });
 });
 //
 //FUNCTIONS
@@ -46,7 +65,7 @@ async function getData() {
   try {
     let res = await axios.get("../js/courses.json");
     let json = await res.data;
-    fillCoursesArray(json);
+    fillCoursesArray(json);//to 75
   } catch (err) {
     console.log(err);
   }
@@ -59,7 +78,7 @@ function fillCoursesArray(value) {
     const course = new Course(id, picture, name, tutor, stars, price, offer);
     coursesArray = [...coursesArray, course];
   });
-  showCourses(coursesArray);
+  showCourses(coursesArray);//to 85
 }
 //
 //creates HTML for the courses in coursesArray
@@ -88,7 +107,7 @@ function showCourses(value) {
   });
   document.querySelector(".courses-container").appendChild($fragment);
   $addToCartButton = document.querySelectorAll(".add-to-cart-button");
-  selectCourse();
+  selectCourse();//to 114
 }
 //
 //Add a course to the cart
@@ -113,20 +132,21 @@ function selectCourse() {
           if (n > 1) {
             cart.pop();
             notification("Ya has agregado este curso", 2);
-            showCoursesInCart($coursesList);
-            showCoursesInCart($confirmCoursesList);
+            showCoursesInCart($coursesList);//to 166
+            showCoursesInCart($confirmCoursesList);//to 166
             return;
           }
 
           notification("Curso agregado con éxito", 1);
-          showCoursesInCart($coursesList);
-          showCoursesInCart($confirmCoursesList);
+          showCoursesInCart($coursesList);//to 166
+          showCoursesInCart($confirmCoursesList);//to 166
+          setLocalStorage();//to 305
           return;
         }
       });
     });
   });
-  setTotalAmmount();
+  setTotalAmmount();//to 227
 }
 //
 //deletes course with the trash-bin button
@@ -134,12 +154,12 @@ function deleteCourse() {
   $deleteCourseButton.forEach((el) => {
     el.addEventListener("click", (e) => {
       cart = cart.filter((el) => el[0].id != e.target.parentElement.dataset.id);
-      showCoursesInCart($coursesList);
-      showCoursesInCart($confirmCoursesList);
+      showCoursesInCart($coursesList);//to 166
+      showCoursesInCart($confirmCoursesList);//to 166
     });
   });
-
-  setTotalAmmount();
+  setLocalStorage();//to 305
+  setTotalAmmount();//to 227
 }
 //
 //Add HTML to cart
@@ -164,8 +184,8 @@ function showCoursesInCart(value) {
   });
   value.appendChild($fragment);
   $deleteCourseButton = document.querySelectorAll(".delete-course-button");
-  deleteCourse();
-  showPayButton();
+  deleteCourse();//to 153
+  showPayButton();//to 237
 }
 //
 //Prevets HTML multiplication
@@ -175,7 +195,7 @@ function clearHTML(value) {
   }
 }
 //
-//Shows a message
+//Shows a message. success or error, acording to value
 function notification(message, value) {
   const $notification = document.getElementById("notification");
   const p = document.createElement("p");
@@ -195,10 +215,12 @@ function notification(message, value) {
 function resetCart() {
   if (cart.length > 0) notification("El carrito ha sido vaciado", 1);
   cart = [];
+  setLocalStorage();//to 305
   totalAmmount = 0;
-  setTotalAmmount();
-  showCoursesInCart($coursesList);
-  showCoursesInCart($confirmCoursesList);
+  setTotalAmmount();//to 227
+  checkConfirmation();//to 310
+  showCoursesInCart($coursesList);//to 166
+  showCoursesInCart($confirmCoursesList);//to 166
 }
 //
 //sets and shows the total ammount in cart
@@ -233,35 +255,40 @@ function searchCourse() {
       .includes($searchResult.value.toLowerCase().trim())
   );
 
+  if ($searchResult.value.toLowerCase().trim() === "") {
+    notification("No se ha ingresado ningún nombre", 2);//to 199
+    $searchResult.value = "";
+    return;
+  }
+
   if (filteredCourse.length === 0) {
-    notification("No se encontró ningún curso con ese nombre", 2);
+    notification("No se encontró ningún curso con ese nombre", 2);//to 199
     $searchResult.value = "";
     return;
   }
 
   if (filteredCourse.length === 1) {
-    notification(`Se encontró ${filteredCourse.length} resultado`, 1);
-    clearHTML($coursesContainer);
-    showCourses(filteredCourse);
-    restoreCourses($coursesContainer);
+    notification(`Se encontró ${filteredCourse.length} resultado`, 1);//to 199
+    clearHTML($coursesContainer);//to 192
+    showCourses(filteredCourse);//to 85
+    restoreCourses($coursesContainer);//to 287
     $searchResult.value = "";
     return;
   }
 
-  notification(`Se encontraron ${filteredCourse.length} resultados`, 1);
-  clearHTML($coursesContainer);
-  showCourses(filteredCourse);
-  restoreCourses($coursesContainer);
+  notification(`Se encontraron ${filteredCourse.length} resultados`, 1);//to 199
+  clearHTML($coursesContainer);//to 192
+  showCourses(filteredCourse);//to 85
+  restoreCourses($coursesContainer);//to 287
   $searchResult.value = "";
 }
 //
 //restore courses after search
 function restoreCourses(value) {
-  const $coursesContainer = document.querySelector(".courses-container");
   const div = document.createElement("div");
 
   div.innerHTML = `
-      <button class="restore-courses-buton" id="restore-courses-button">Volver atrás</button>
+      <button class="restore-courses-buton" id="restore-courses-button">Mostrar todos</button>
   `;
 
   value.appendChild(div);
@@ -269,27 +296,96 @@ function restoreCourses(value) {
   document
     .querySelector("#restore-courses-button")
     .addEventListener("click", () => {
-      clearHTML(value);
-      showCourses(coursesArray);
+      clearHTML(value);//to 192
+      showCourses(coursesArray);//to 85
     });
 }
 //
-//shows confirm section
-function proceedToPay() {
-  hide(document.querySelector(".courses"));
-  hide(document.querySelector(".hero"));
-  hide(document.querySelector(".nav-search"));
+//
+function setLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+//
+//checks if user name and mail are ok, and cart has at least 1 article
+function checkConfirmation() {
+  let uMail = false;
+  let uName = false;
 
-    show(document.querySelector('.confirm'));
-    restoreCourses(document.querySelector('.confirm'))
+  const $userNameConfirmation = document.querySelector(
+    "#user-name-confirmation"
+  );
+  const $userMailConfirmation = document.querySelector(
+    "#user-mail-confirmation"
+  );
+  const $cartMessage = document.querySelector("#cart-message");
+
+  const userName = /^[a-zA-Z0-9\_\-]{4,16}$/;
+  const userMail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+  uName = userName.test($userName.value);
+  uMail = userMail.test($userMail.value);
+
+  if (!uName) {
+    $userNameConfirmation.classList.remove("d-n");
+    return;
+  }
+  console.log("1");
+  $userNameConfirmation.classList.add("d-n");
+
+  if (!uMail) {
+    $userMailConfirmation.classList.remove("d-n");
+    return;
+  }
+  $userMailConfirmation.classList.add("d-n");
+
+  if (cart.length == 0){
+    $cartMessage.classList.remove("d-n");
+    return;
+  } 
+
+  finalMessage();//to 350
 }
 //
-//display inline to something
-function show(element, value) {
-  element.style.display = value || "inline";
+//Confirmation message. End of purchase
+function finalMessage() {
+  const $done = document.querySelector(".done");
+
+  document.querySelector("main").style.display = "none";
+  document.querySelector(".nav-search").style.display = "none";
+  $done.classList.remove("d-n");
+
+  spinner($done);//to 373
+
+  const p = document.createElement("p");
+  p.innerHTML = `
+      Gracias, <span>${$userName.value}</span>! Estarás recibiendo la factura en tu correo <span>${$userMail.value}</span>.
+  `;
+
+  setTimeout(() => {
+    $done.firstChild.remove();
+    $done.appendChild(p);
+    resetUser();//to 388
+    resetCart();//to 215
+  }, 2000);
 }
 //
-//display none to something
-function hide(element, value) {
-  element.style.display = value || "none";
+//
+function spinner(element) {
+  const div = document.createElement("div");
+  div.classList.add("sk-chase");
+  div.innerHTML = `
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+  `;
+  element.appendChild(div);
+}
+//
+//
+function resetUser() {
+  $userMail.value = "";
+  $userName.value = "";
 }
