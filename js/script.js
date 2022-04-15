@@ -10,7 +10,7 @@ class Course {
     this.offer = offer;
   }
 }
-//
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 //CONST
 const $coursesList = document.querySelector("#courses-list");
 const $confirmCoursesList = document.querySelector(
@@ -28,7 +28,7 @@ let totalAmmount = 0;
 //ARRAY
 let cart = [];
 let coursesArray = [];
-//
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 //EXECUTION STARTS
 window.addEventListener("DOMContentLoaded", () => {
   cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
     checkConfirmation();//to 310
   });
 });
-//
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 //FUNCTIONS
 //
 //brings data from URL, using AXIOS library
@@ -211,7 +211,7 @@ function notification(message, value) {
   }, 1500);
 }
 //
-//
+//reset all values related to purchase
 function resetCart() {
   if (cart.length > 0) notification("El carrito ha sido vaciado", 1);
   cart = [];
@@ -301,7 +301,7 @@ function restoreCourses(value) {
     });
 }
 //
-//
+//sends info in cart array to localstorage
 function setLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -397,3 +397,4 @@ function userError(value){
     value.classList.add("d-n");
   }, 1500)
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
