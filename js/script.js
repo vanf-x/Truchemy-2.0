@@ -322,8 +322,8 @@ function checkConfirmation() {
   const userName = /^[a-zA-Z0-9\_\-]{4,16}$/;
   const userMail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-  uName = userName.test($userName.value);
-  uMail = userMail.test($userMail.value);
+  uName = userName.test($userName.value.trim());
+  uMail = userMail.test($userMail.value.trim());
 
   if (!uName) {
     userError($userNameConfirmation);//to 394
